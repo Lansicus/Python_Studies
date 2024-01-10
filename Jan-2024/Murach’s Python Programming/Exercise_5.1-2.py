@@ -1,12 +1,12 @@
 import random
 
-
-
 tax = 0.06
+
 
 def sales_tax(total):
     sales_tax = total * tax
     return total
+
 
 def main():
     print("Sales Tax Calculator\n")
@@ -14,36 +14,40 @@ def main():
     total_after_tax = round(total + sales_tax(total), 2)
     print("Total after tax: ", total_after_tax)
 
+
 if __name__ == "__main__":
     main()
 
-# ----------------------------------------------------------------------------------------------------------------------
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 
 def display_title():
     print("Guess the number!")
     print()
 
+
 def get_limit():
     limit = int(input("Enter the upper limit for the range of numbers: "))
     return limit
 
+
 def play_game(limit):
     number = random.randint(1, limit)
     print(f"I'm thinking of a number from 1 to {limit}\n")
-    count = 0
+    count = 1
     while True:
         guess = int(input("Your guess: "))
         if guess < number:
             print("Too low.")
             count += 1
-        elif guess >= number:
+        elif guess > number:
             print("Too high.")
             count += 1
         elif guess == number:
             print(f"You guessed it in {count} tries.\n")
             return
+
 
 def main():
     display_title()
@@ -51,13 +55,13 @@ def main():
     again = "y"
     while again.lower() == "y":
         limit = get_limit()
-        play_game()
+        play_game(limit)
 
         again = input("Play again? (y/n): ")
         print()
     print("Bye!")
 
+
 # if started as the main module, call the main function
 if __name__ == "__main__":
     main()
-
