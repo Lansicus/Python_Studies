@@ -1,5 +1,6 @@
 from random import randint
 
+
 # 4.1
 # Even or odd Checker
 
@@ -22,9 +23,11 @@ def check_even_odd():
 def hike_title():
     print("Hike calculator\n\n")
 
+
 def miles_to_feet(miles):
     feet = miles * 5280
     return feet
+
 
 def hike_calculator():
     hike_title()
@@ -32,12 +35,50 @@ def hike_calculator():
     feet = miles_to_feet(miles)
     print(f"You have walked {feet} feet\n")
 
-# Call the function to execute the hike calculator
 
+# Call the function to execute the hike calculator
 
 
 # ---------------------------------------------------------------------------------------------------------------------
 # 4.3
+def meter_feet_title():
+    print("Feet and Meters Converter")
+
+
+def meter_to_feet(meter):
+    feet = meter / 0.3048
+    return feet
+
+
+def feet_to_meter(feet):
+    meters = feet * 0.3048
+    return meters
+
+
+def conversions_method():
+    print("Conversions Menu:")
+    print("a. Feet to Meters")
+    print("b. Meters to Feet")
+
+    while True:
+        choice = input("Select a conversion (a/b/no): ")
+
+        if choice.lower() == "a":
+            feet = float(input("Enter feet: "))
+            print(f"{feet} feet is approximately {round(feet_to_meter(feet), 2)} meters")
+        elif choice.lower() == "b":
+            meter = float(input("Enter meters: "))
+            print(f"{meter} meters is approximately {round(meter_to_feet(meter), 2)} feet")
+        elif choice.lower() == "no":
+            print("Closing Converter")
+            break
+        else:
+            print("Enter 'a', 'b', or 'no'.")
+
+
+def feet_and_meters_converter():
+    meter_feet_title()
+    conversions_method()
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -74,7 +115,7 @@ def dice_roller():
 
                 if snake:
                     print("Snake eyes!")
-                if box:
+                elif box:
                     print("Boxcar!")
 
                 keep_rolling = input("Roll again? (y/n)\n\n ")
@@ -117,6 +158,7 @@ def main():
     check_even_odd()
     hike_calculator()
     dice_roller()
+    feet_and_meters_converter()
 
 
 main()
