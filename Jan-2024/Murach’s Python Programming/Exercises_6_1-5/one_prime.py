@@ -1,3 +1,6 @@
+# import six_two as demo
+
+
 # ----------------------------------------------------------------------------------------------------------------------
 # TRY AGAIN FUNCTION?
 def keep_going():
@@ -60,61 +63,10 @@ def prime_number_checker():
     prime_number_prompt()
 
 
-
-
 # ----------------------------------------------------------------------------------------------------------------------
-# WIZARD SHLIZARD
-inventory = ["Wizard Hat", "fire staff", "running shoes", "sprint potion"]
-ground_items = ["dire claw", "nice pelt", "big hammer"]
-def take_command():
-    selection = input("What is your command? ")
-    return selection
-def command(choice):
-    if choice.lower() == "show":
-        for item in inventory:
-            print(item)
-    if choice.lower() == "grab":
-        if len(inventory) = 5:
-            print("you are carrying too much already")
-            break
-        else:
-            for index, item in enumerate(ground_items, start=1):
-                print(f"{index}. {item}")
-                grab_choice = input("What would you like to pick up..? ")
-                inventory.append(grab_choice)
-
-        inventory.append()
-    if choice.lower() == "edit":
-        inventory[] =
-    if choice.lower() == "drop":
-        inventory.remove()
-    if choice.lower() == "exit":
-        break
-    else:
-        print("Enter a valid command or exit")
-
-def wizard_title():
-    print("The Wizard Inventory Program")
-    print()
-    print("COMMAND MENU")
-    print("show - Show all items")
-    print("grab - Grab an item")
-    print("edit - Edit an item")
-    print("drop - drop an item")
-    print("exit - Exit program")
-
-    print(f"Command: {command(take_command())}")
-
-    # selecti0on = take_command()
-    #
-    # if selecti0on == :
-
-
-
-# ----------------------------------------------------------------------------------------------------------------------
-#MAIN FUNCTION
+# MAIN FUNCTION
 def main():
-    # prime_number_checker()
+    prime_number_checker()
 
 
 main()
