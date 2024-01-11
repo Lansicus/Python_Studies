@@ -6,6 +6,10 @@ def show_inventory():
     for item in inventory:
         print(item)
 
+def show_ground():
+    for item in inventory:
+        print(item)
+
 
 def grab_item():
     if len(inventory) == 5:
@@ -77,6 +81,7 @@ def wizard_title():
     print()
     print("COMMAND MENU")
     print("show - Show all items")
+    print("look - Show nearby items")
     print("grab - Grab an item")
     print("edit - Edit an item")
     print("drop - Drop an item")
@@ -87,6 +92,8 @@ def wizard_title():
 
         if command == "show":
             show_inventory()
+        elif command == "look":
+            show_ground()
         elif command == "grab":
             grab_item()
         elif command == "edit":

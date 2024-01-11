@@ -32,9 +32,9 @@ def prime_number_title():
 
 def prime_number_prompt():
     while True:
-        pick = input("Enter an integer between 1 and 5000, or 'no' to exit: ")
+        pick = input("Enter an integer between 1 and 5000, or type 'exit': ")
 
-        if pick.lower() == 'no':
+        if pick.lower() == 'exit':
             print("Application closed")
             break
         else:
@@ -52,7 +52,7 @@ def prime_number_prompt():
                 else:
                     print("Enter an integer between 1 and 5000.")
             except ValueError:
-                print("Invalid input. Enter an integer or 'no'.")
+                print("Invalid input. Enter an integer or 'exit'.")
 
             if not keep_going():
                 break
