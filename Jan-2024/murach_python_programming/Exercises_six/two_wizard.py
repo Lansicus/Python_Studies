@@ -108,8 +108,8 @@ def wizard_title():
 
 
 # Call the function to start the program
-def main_Wiz():
+def main_wiz():
     wizard_title()
 
 
-main_Wiz()
+main_wiz()
