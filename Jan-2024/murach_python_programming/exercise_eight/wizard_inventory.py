@@ -1,23 +1,26 @@
 import os
 import random
 
-ALL_ITEMS_FILE = "Jan-2024/murach_python_programming/Exercises_seven/wizard/all_items.txt"
-INVENTORY_FILE = "Jan-2024/murach_python_programming/Exercises_seven/wizard/wizard_inventory.txt"
+ALL_ITEMS_FILE = ("/Users/lanceburk/IdeaProjects/Python Projects/Jan-2024/murach_python_programming/Exercises_seven"
+                  "/wizard/all_items.txt")
+INVENTORY_FILE = "../Exercises_seven/wizard/wizard_inventory.txt"
 
 
 def file_checker():
-    if not os.path.exists(ALL_ITEMS_FILE):  # Check if ALL_ITEMS_FILE does not exist
+    if not os.path.exists(ALL_ITEMS_FILE):
         print("Could not find items file.")
         print("Exiting program. Bye!")
-        return
+        return False
 
-    if not os.path.exists(INVENTORY_FILE):  # Check if INVENTORY_FILE does not exist
+    if not os.path.exists(INVENTORY_FILE):
         print("Could not find inventory file.")
         print("Wizard is starting with no inventory.")
 
         # Create the inventory file
-        with open("Jan-2024/murach_python_programming/Exercises_seven/wizard/wizard_inventory.txt", "x") as file:
+        with open(INVENTORY_FILE, "x") as file:
             file.write("")
+
+    return True
 
 
 # Menu function
@@ -97,7 +100,8 @@ def main():
     all_items = read_all_items()
 
     while True:
-        file_checker()
+        if not file_checker():
+            break
         cmd = input("Command: ").lower()
         if cmd == "show":
             show(inventory)
