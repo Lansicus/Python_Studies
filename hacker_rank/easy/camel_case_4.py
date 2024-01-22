@@ -1,3 +1,71 @@
+# -------------------------------------------------------------------------------------------------------- BEST SOLUTION
+import sys
+import re
+
+
+# Function to process each input line
+def process_input_line(line):
+    # Split the input line into operation, type, and name
+    operation, typ, name = line.strip("()").split(";")
+
+    # Check if the name contains spaces and handle accordingly
+    if " " in name:
+        name = name.split()
+    else:
+        # Use regular expression to find all words in camel case
+        name = re.findall("[A-Z]?[a-z]+", name)
+
+    # Perform the specified operation
+    if operation == "S":
+        # If 'split', join words in lowercase with space
+        return " ".join([w.lower() for w in name])
+    else:
+        # If 'combine', create camel case string based on type
+        camel_case = name[0].lower() + "".join([w.capitalize() for w in name[1:]])
+        if typ == "M":
+            return camel_case + "()"
+        if typ == "C":
+            return "".join([w.capitalize() for w in name])
+        return camel_case
+
+
+# Main function to read from STDIN and print to STDOUT
+def main():
+    # Read the complete input from STDIN and remove carriage returns
+    complete_input = sys.stdin.read().replace("\r", "")
+
+    # Process each input line using the process_input_line function
+    results = map(process_input_line, complete_input.split("\n"))
+
+    # Print the results to STDOUT
+    print("\n".join(results))
+
+
+# Ensure that the main function is called when the script is executed
+if __name__ == "__main__":
+    main()
+
+# ---------------------------------------------------------------------------------------------------------------- RULES
+# First Letter:
+# 'S' = Separate the words
+# 'C' = Combine the words
+#
+# Second Letter:
+# 'M' = Method
+# 'V' = Variable
+# 'C' = Class
+#
+# Letter Combos:
+# 'S;M;' = separate words before capital letters & Lowercase all words & remove '()'
+# 'S;C;' = separate words before capital letters & Lowercase all words
+# 'S;V;' = separate words before capital letters & Lowercase all words
+#
+# 'C;M;' = capitalize every word after the first & then remove blank space & end with ()
+# 'C;C;' = capitalize the start of every word & then remove blank space between
+# 'C;V;' = capitalize every word after the first & then remove blank space
+
+
+# ------------------------------------------------------------------------------------------------ EXAMPLE INPUT/ OUTPUT
 # EXAMPLE 1
 # INPUT: 'S;M;plasticCup()'
 # OUTPUT: 'plastic cup'
@@ -22,73 +90,6 @@
 # INPUT: 'S;V;pictureFrame'
 # OUTPUT: 'picture frame'
 
-
-# ---------------------------------------------------------------------------------------------------------------- RULES
-# First Letter:
-# 'S' = Separate the words
-# 'C' = Combine the words
-#
-# Second Letter:
-# 'M' = Method
-# 'V' = Variable
-# 'C' = Class
-#
-# Letter Combos:
-# 'S;M;' = separate words before capital letters & Lowercase all words & remove '()'
-# 'S;C;' = separate words before capital letters & Lowercase all words
-# 'S;V;' = separate words before capital letters & Lowercase all words
-#
-# 'C;M;' = capitalize every word after the first & then remove blank space & end with ()
-# 'C;C;' = capitalize the start of every word & then remove blank space between
-# 'C;V;' = capitalize every word after the first & then remove blank space
-
-
-# --------------------------------------------------------------------------------------------------------- BEST ATTEMPT
-import sys
-import re
-
-
-# Function to process each input line
-def process_input_line(line):
-    # Split the input line into operation, type, and name
-    operation, typ, name = line.strip("()").split(";")
-
-    # Check if the name contains spaces and handle accordingly
-    if " " in name:
-        name = name.split()
-    else:
-        # Use regular expression to find all words in camel case
-        name = re.findall("[A-Z]?[a-z]+", name)
-
-    # Perform the specified operation
-    if operation == "S":
-        # If split, join words in lowercase with space
-        return " ".join([w.lower() for w in name])
-    else:
-        # If combine, create camel case string based on type
-        camel_case = name[0].lower() + "".join([w.capitalize() for w in name[1:]])
-        if typ == "M":
-            return camel_case + "()"
-        if typ == "C":
-            return "".join([w.capitalize() for w in name])
-        return camel_case
-
-
-# Main function to read from STDIN and print to STDOUT
-def main():
-    # Read the complete input from STDIN and remove carriage returns
-    complete_input = sys.stdin.read().replace("\r", "")
-
-    # Process each input line using the process_input_line function
-    results = map(process_input_line, complete_input.split("\n"))
-
-    # Print the results to STDOUT
-    print("\n".join(results))
-
-
-# Ensure that the main function is called when the script is executed
-if __name__ == "__main__":
-    main()
 
 # ------------------------------------------------------------------------------------------------- HONORABLE MENTIONS 1
 # import sys
